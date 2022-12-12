@@ -7,6 +7,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
 const paymentRoutes = require("./routes/payment");
 const orderRoutes = require("./routes/orderRoutes");
+const path = require ("path");
 const app = express();
 
 // database connection
@@ -26,6 +27,13 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ msg: "Welcome to chawkbazar" });
 });
+
+// static file
+app.use(express.static(path.join(__dirname, './client/build')));
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
+});
+
 // user routes
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
