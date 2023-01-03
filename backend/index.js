@@ -25,13 +25,7 @@ app.post(
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to chawkbazar" });
-});
-
-// static file
-app.use(express.static(path.join(__dirname, './client/build')));
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
+  res.json({ msg: "Welcome to New market" });
 });
 
 // user routes
